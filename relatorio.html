@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/relatorio.css">
+</head>
+<body>
+    <header>
+        <aside class="menu-lateral">
+            <img class="logo-perfil" src="assets/img/logo-temaclaro-horizontal 1.png" alt="Bolso em Dia">
+            <nav class="navegacao-perfil">
+                <a href="#">
+                    <img src="assets/img/Home (1).png" alt="">
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#">
+                    <img src="assets/img/Trending up.png" alt="">
+                    <span>Rendimentos</span>
+                </a>
+
+                <a href="#">
+                    <img src="assets/img/Credit card.png" alt="">
+                    <span>Despesas</span>
+                </a>
+
+                <a href="#">
+                    <img src="assets/img/Calendar (1).png" alt="">
+                    <span>Dia Trabalhado</span>
+                </a>
+
+                <a href="#">
+                    <img src="assets/img/Briefcase.png" alt="">
+                    <span>Serviço Extra</span>
+                </a>
+
+                <a href="#" class="relatorio">
+                    <img src="assets/img/Pie chart.png" alt="">
+                    <span>Relatórios</span>
+                </a>
+
+                <a href="#">
+                    <img src="assets/img/Clock.png" alt="">
+                    <span>Histórico Semanal</span>
+                </a>
+            </nav>
+
+            <a class="sair-perfil" href="login.html">
+                <img src="assets/img/Log out (1).png" alt="">
+                <span>Sair</span>
+            </a>
+        </aside>
+    </header>
+    <div class="pagina">
+        <div class="perfil">
+            <img src="assets/img/user.png" alt="ícone de perfil">
+            <span class="nome">nome_usuario</span>
+            <span class="email">email_usuario</span>
+        </div>
+        <hr>
+        <div class="parte_superior">
+            <div id="recepcao_usuario">
+                <p>Olá, <span>nome_usuario</span></p>
+                <h2>Relatórios</h2>
+                <p>Acompanhe os ganhos por mês e exporte seus resultados.</p>
+            </div>
+            <button type="submit">Baixar Relatório</button>
+        </div>
+        <article>
+            <div class="maior_ganho">
+                <img src="assets/img/Star.png" alt="">
+                <div class="textos">
+                    <p>Maior ganho do ano</p>
+                    <div class="valores">
+                        <span class="mes">mês</span>
+                        <span class="valor">valor</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="texto_comemorativo">
+                <div class="linha-vertical"></div>
+                <img src="assets/img/Trending up (1).png" alt="">
+                <div class="linha-vertical2"></div>
+                <div class="informacao">
+                    <h6>Este foi o seu melhor resultado no ano!</h6>
+                    <p>Dezembro teve o maior ganho entre todos os meses de 2024.</p>
+                </div>
+                
+            </div>
+        </article>
+        <main class="relatorios_meses">
+            <h3>Ganhos por mês</h3>
+            <!-- <select></select> Pensar depois sobre o select de ano, ja que vai ter rota para ele -->
+            <div class="meses">
+            </div>
+        </main>
+    </div>
+    
+</body>
+</html>
