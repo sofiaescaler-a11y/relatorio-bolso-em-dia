@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Movimentação - Bolso em Dia</title>
+    <link rel="icon" href="{{ url_for('static', filename='uploads/logo-escuro.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/movimentacao.css') }}">
+</head>
+<body class="pagina-sistema">
+
+    <aside class="menu-lateral">
+        <a href="{{ url_for('dashboard') }}" class="seta-voltar">‹</a>
+        <img class="logo-perfil" src="{{ url_for('static', filename='uploads/logo-horizontal.png') }}" alt="Bolso em Dia">
+
+        <nav class="navegacao-perfil">
+            <a href="{{ url_for('dashboard') }}">
+                <img src="{{ url_for('static', filename='uploads/perfil-dashboard.png') }}" alt="">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#">
+                <img src="{{ url_for('static', filename='uploads/perfil-rendimentos.png') }}" alt="">
+                <span>Rendimentos</span>
+            </a>
+
+            <a href="#">
+                <img src="{{ url_for('static', filename='uploads/perfil-despesas.png') }}" alt="">
+                <span>Despesas</span>
+            </a>
+
+            <a href="#">
+                <img src="{{ url_for('static', filename='uploads/perfil-dia-trabalhado.png') }}" alt="">
+                <span>Dia Trabalhado</span>
+            </a>
+
+            <a href="{{ url_for('servico_extra') }}">
+                <img src="{{ url_for('static', filename='uploads/perfil-servico-extra.png') }}" alt="">
+                <span>Serviço Extra</span>
+            </a>
+
+            <a href="#">
+                <img src="{{ url_for('static', filename='uploads/perfil-relatorios.png') }}" alt="">
+                <span>Relatórios</span>
+            </a>
+
+            <a href="#">
+                <img src="{{ url_for('static', filename='uploads/perfil-historico.png') }}" alt="">
+                <span>Histórico Semanal</span>
+            </a>
+        </nav>
+
+        <a class="sair-perfil" href="{{ url_for('logout') }}">
+            <div class="sair-conteudo">
+                <img src="{{ url_for('static', filename='uploads/perfil-sair.png') }}" alt="">
+                <span>Sair</span>
+            </div>
+        </a>
+    </aside>
+
+    <main class="conteudo-sistema">
+        <header class="topo-perfil">
+            <div></div>
+
+            <a href="{{ url_for('perfil') }}" class="usuario-logado">
+                {% if usuario[9] %}
+                    <img src="{{ url_for('static', filename='Uploads/' + usuario[9]) }}" alt="Foto do usuário">
+                {% else %}
+                    <img src="{{ url_for('static', filename='Uploads/perfil-usuario-topo.png') }}" alt="Foto padrão">
+                {% endif %}
+                <div>
+                    <strong>{{ usuario[0].split()[:2] | join(' ') }}</strong>
+                    <span>{{ usuario[1] }}</span>
+                </div>
+            </a>
+        </header>
+
+        <div class="linha-topo"></div>
+
+        <section class="titulo-movimentacao">
+            <p>Olá, {{ usuario[0].split()[:2] | join(' ') }}!</p>
+            <h1>Cadastrar Movimentação</h1>
+            <p>Registre uma nova movimentação.</p>
+        </section>
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% for categoria, mensagem in mensagens %}
+                <p class="mensagem {{ categoria }}">{{ mensagem }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <section class="card-movimentacao">
+            <div class="cabecalho-movimentacao">
+                <div class="icone-movimentacao">
+                    <img src="{{ url_for('static', filename='uploads/mala-verde.png') }}" alt="">
+                </div>
+                <div>
+                    <h2>Cadastrar Movimentação</h2>
+                    <p>Preencha todos os dados necessários</p>
+                </div>
+            </div>
+
+            <form action="{{ url_for('cadastrar_movimentacao') }}" method="POST">
+                <div class="linha-campos">
+                    <div class="grupo-movimentacao valor-movimentacao">
+                        <label>Valor <span>*</span></label>
+
+                        <div class="campo-valor">
+                            <strong>R$</strong>
+                            <input type="number" name="valor" min="0.01" step="0.01" placeholder="0,00" required>
+                        </div>
+                    </div>
+
+                    <div class="grupo-movimentacao">
+                        <label>Tipo <span>*</span></label>
+
+                        <select name="tipo" id="tipo" required onchange="filtrarCategorias()">
+                            <option value="">Selecione</option>
+                            <option value="1">Despesa</option>
+                            <option value="2">Receita</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-movimentacao">
+                        <label>Data <span>*</span></label>
+
+                        <div class="campo-data">
+                            <div class="icone-campo">
+                                <img src="{{ url_for('static', filename='uploads/calendar-cinza.png') }}" alt="">
+                            </div>
+                            <input type="date" name="data" required>
+                        </div>
+                    </div>
+
+                    <div class="grupo-movimentacao">
+                        <label>Categoria <span>*</span></label>
+
+                        <select name="categoria" id="categoria" required>
+                            <option value="">Selecione</option>
+
+                            {% for categoria in categorias %}
+                                <option value="{{ categoria[0] }}" data-tipo="{{ categoria[2] }}">
+                                    {{ categoria[1] }}
+                                </option>
+                            {% endfor %}
+
+                            <option value="nova">Adicionar Categoria</option>
+                        </select>
+
+                        <a href="{{ url_for('todas_categorias') }}" class="ver-categorias">
+                            Ver todas as categorias
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grupo-descricao">
+                    <label>Descrição da movimentação</label>
+
+                    <div class="campo-descricao">
+                        <img class="icone-descricao" src="{{ url_for('static', filename='uploads/document-cinza.png') }}" alt="">
+                        <textarea name="descricao" maxlength="500" placeholder="Descreva os detalhes da movimentação..."></textarea>
+                        <span class="contador-descricao">0/500</span>
+                    </div>
+                </div>
+
+                <div class="botoes-movimentacao">
+                    <a href="{{ url_for('dashboard') }}" class="cancelar-movimentacao">Cancelar</a>
+                    <button type="submit" class="registrar-movimentacao">Registrar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // pega o campo de tipo da movimentação
+        const tipo = document.getElementById('tipo');
+
+        // pega o campo de categoria
+        const categoria = document.getElementById('categoria');
+
+        // pega o campo de descrição
+        const descricao = document.querySelector('textarea');
+
+        // pega o contador de caracteres
+        const contador = document.querySelector('.contador-descricao');
+
+
+        // filtra as categorias de acordo com o tipo selecionado
+        function filtrarCategorias() {
+
+            // pega o valor do tipo escolhido
+            const tipoSelecionado = tipo.value;
+
+            // limpa a categoria selecionada
+            categoria.value = '';
+
+            // passa por todas as opções do campo de categoria
+            for (let opcao of categoria.options) {
+
+                // pega o tipo da categoria
+                const tipoCategoria = opcao.getAttribute('data-tipo');
+
+                // opções sem tipo continuam aparecendo
+                if (!tipoCategoria) {
+                    opcao.hidden = false;
+
+                // mostra a categoria se ela tiver o mesmo tipo selecionado
+                } else if (tipoCategoria == tipoSelecionado) {
+                    opcao.hidden = false;
+
+                // esconde categorias de outro tipo
+                } else {
+                    opcao.hidden = true;
+                }
+            }
+        }
+
+
+        // verifica quando o usuário troca a categoria
+        categoria.addEventListener('change', function() {
+
+            // se escolher "Adicionar Categoria", abre a página de cadastro de categoria
+            if (categoria.value == 'nova') {
+                window.location.href = "{{ url_for('nova_categoria') }}";
+            }
+        });
+
+
+        // atualiza o contador enquanto o usuário digita a descrição
+        descricao.addEventListener('input', function() {
+
+            // mostra a quantidade de caracteres digitados
+            contador.textContent = descricao.value.length + '/500';
+        });
+    </script>
+
+</body>
+</html>

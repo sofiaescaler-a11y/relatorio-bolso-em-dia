@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <link rel="icon" href="{{ url_for('static', filename='uploads/logo-escuro.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorio.css') }}">
+    <script src="{{ url_for('static', filename='js/alteracao_foto.js') }}" defer></script>
+
+</head>
+<body>
+    <aside class="menu-lateral">
+        <img class="logo-perfil" src="static/uploads/logo-horizontal.png" alt="Bolso em Dia">
+        <nav class="navegacao-perfil">
+            <a  href="{{ url_for('dashboard') }}">
+                <img src="static/uploads/perfil-dashboard.png" alt="">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-rendimentos.png" alt="">
+                <span>Rendimentos</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-despesas.png" alt="">
+                <span>Despesas</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-dia-trabalhado.png" alt="">
+                <span>Dia Trabalhado</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-servico-extra.png" alt="">
+                <span>Serviço Extra</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-relatorios.png" alt="">
+                <span>Relatórios</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-historico.png" alt="">
+                <span>Histórico Semanal</span>
+            </a>
+        </nav>
+
+        <a class="sair-perfil"  href="{{ url_for('logout') }}">
+            <img src="static/uploads/perfil-sair.png" alt="">
+            <span>Sair</span>
+        </a>
+    </aside>
+    <div class="pagina">
+        <div class="perfil">
+            <img src="static/uploads/user.png" alt="ícone de perfil">
+            <span class="nome">nome_usuario</span>
+            <span class="email">email_usuario</span>
+        </div>
+        <div class="linha"></div>
+        <div class="parte_superior">
+            <div id="recepcao_usuario">
+                <p>Olá, <span>nome_usuario</span></p>
+                <h2>Relatórios</h2>
+                <p>Acompanhe os ganhos por mês e exporte seus resultados.</p>
+            </div>
+            <button type="submit">Baixar Relatório</button>
+        </div>
+        <article>
+            <div class="maior_ganho">
+                <img src="static/uploads/Icone.png" alt="">
+                <div class="textos">
+                    <p>Maior ganho do ano</p>
+                    <div class="valores">
+                        <span class="mes">mês</span>
+                        <span class="valor">valor</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="texto_comemorativo">
+                <div class="linha-vertical"></div>
+                <img src="static/uploads/Trending up (1).png" alt="">
+                <div class="linha-vertical2"></div>
+                <div class="informacao">
+                    <h6>Este foi o seu melhor resultado no ano!</h6>
+                    <p><span>mes</span> teve o maior ganho entre todos os meses de <span>ano</span>.</p>
+                </div>
+
+            </div>
+        </article>
+        <main class="relatorios_meses">
+            <h3>Ganhos por mês</h3>
+            <!-- <select></select> Pensar depois sobre o select de ano, ja que vai ter rota para ele -->
+            <div class="meses">
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+body {
+    background-color: var(--branco-acinzentado);
+}
+
+.titulo-movimentacao {
+    padding: 18px 10px 20px;
+}
+
+.titulo-movimentacao p {
+    font-size: 14px;
+}
+
+.titulo-movimentacao h1 {
+    margin: 3px 0;
+    font-size: 32px;
+}
+
+.card-movimentacao {
+    width: 100%;
+    padding: 22px;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza);
+    border-radius: 18px;
+}
+
+.cabecalho-movimentacao {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 38px;
+}
+
+.icone-movimentacao {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--verde-clarinho);
+    border-radius: 10px;
+}
+
+.icone-movimentacao img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.cabecalho-movimentacao h2 {
+    font-size: 26px;
+}
+
+.cabecalho-movimentacao p {
+    font-size: 15px;
+}
+
+.linha-campos {
+    width: 100%;
+    display: flex;
+    gap: 18px;
+}
+
+.grupo-movimentacao {
+    width: 25%;
+}
+
+.grupo-movimentacao label,
+.grupo-descricao label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--azul-cinzento-escuro);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.grupo-movimentacao label span {
+    color: var(--vermelho);
+}
+
+.grupo-movimentacao select,
+.grupo-movimentacao > input {
+    width: 100%;
+    height: 51px;
+    padding: 0 12px;
+    border: 1px solid var(--cinza);
+    border-radius: 9px;
+    background-color: var(--branco);
+    color: var(--azul-cinzento-escuro);
+    font-size: 14px;
+    outline: none;
+}
+
+.campo-valor {
+    width: 100%;
+    height: 51px;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid var(--cinza);
+    border-radius: 9px;
+}
+
+.campo-valor strong {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cinza-claro);
+    color: var(--cinza-escuro);
+}
+
+.campo-valor input {
+    width: 100%;
+    padding: 0 12px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.grupo-descricao {
+    width: 100%;
+    margin-top: 25px;
+    position: relative;
+}
+
+.contador-descricao {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    color: var(--cinza-escuro);
+    font-size: 10px;
+}
+
+.botoes-movimentacao {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancelar-movimentacao,
+.registrar-movimentacao {
+    width: 190px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.cancelar-movimentacao {
+    background-color: var(--branco);
+    color: var(--azul-cinzento-escuro);
+    border: 1px solid var(--cinza);
+}
+
+.registrar-movimentacao {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    border: none;
+}
+
+.campo-data {
+    width: 100%;
+    height: 51px;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid var(--cinza);
+    border-radius: 9px;
+    background-color: var(--branco);
+}
+
+.icone-campo {
+    width: 50px;
+    flex: 0 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cinza-claro);
+}
+
+.icone-campo img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+}
+
+.campo-data input {
+    width: 100%;
+    padding: 0 12px;
+    border: none;
+    outline: none;
+    background-color: var(--branco);
+    color: var(--azul-cinzento-escuro);
+    font-size: 14px;
+}
+
+.campo-descricao {
+    width: 100%;
+    position: relative;
+}
+
+.campo-descricao textarea {
+    width: 100%;
+    height: 190px;
+    padding: 16px 16px 16px 54px;
+    resize: none;
+    border: 1px solid var(--cinza);
+    border-radius: 9px;
+    outline: none;
+    font-size: 14px;
+}
+
+.icone-descricao {
+    width: 27px;
+    height: 27px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    object-fit: contain;
+    z-index: 2;
+}
+
+.contador-descricao {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    color: var(--cinza-escuro);
+    font-size: 10px;
+}
+
+.campo-valor input[type="number"]::-webkit-inner-spin-button,
+.campo-valor input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.campo-valor input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.campo-data input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.ver-categorias {
+    display: inline-block;
+    margin-top: 7px;
+    color: var(--verde-escuro);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ver-categorias:hover {
+    text-decoration: underline;
+}
+
+/* TABLET */
+
+@media (min-width: 767px) and (max-width: 1023px) {
+
+    .titulo-movimentacao h1 {
+        font-size: 28px;
+    }
+
+    .card-movimentacao {
+        padding: 18px;
+    }
+
+    .linha-campos {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .grupo-movimentacao {
+        width: calc(50% - 7px);
+    }
+
+    .cabecalho-movimentacao {
+        margin-bottom: 28px;
+    }
+
+    .cabecalho-movimentacao h2 {
+        font-size: 22px;
+    }
+}
+
+
+/* CELULAR */
+
+@media (max-width: 766px) {
+
+    .titulo-movimentacao {
+        padding: 5px 2px 15px;
+    }
+
+    .titulo-movimentacao h1 {
+        font-size: 27px;
+    }
+
+    .card-movimentacao {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .cabecalho-movimentacao {
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .icone-movimentacao {
+        width: 48px;
+        height: 48px;
+    }
+
+    .icone-movimentacao img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .cabecalho-movimentacao h2 {
+        font-size: 19px;
+    }
+
+    .cabecalho-movimentacao p {
+        font-size: 12px;
+    }
+
+    .linha-campos {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .grupo-movimentacao {
+        width: 100%;
+    }
+
+    .grupo-movimentacao label,
+    .grupo-descricao label {
+        font-size: 14px;
+    }
+
+    .grupo-descricao {
+        margin-top: 17px;
+    }
+
+    .grupo-descricao textarea {
+        height: 150px;
+    }
+
+    .botoes-movimentacao {
+        flex-direction: column;
+    }
+
+    .cancelar-movimentacao,
+    .registrar-movimentacao {
+        width: 100%;
+    }
+
+    .registrar-movimentacao {
+        order: 1;
+    }
+
+    .cancelar-movimentacao {
+        order: 2;
+    }
+}

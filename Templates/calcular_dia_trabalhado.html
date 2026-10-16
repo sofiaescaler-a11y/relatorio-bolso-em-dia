@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar dia trabalhado</title>
+    <link rel="icon" href="{{ url_for('static', filename='uploads/logo-escuro.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calcular_dia_trabalhado.css') }}">
+    <script src="{{ url_for('static', filename='js/alteracao_foto.js') }}" defer></script>
+    
+</head>
+<body>
+    <aside class="menu-lateral">
+        <img class="logo-perfil" src="static/uploads/logo-horizontal.png" alt="Bolso em Dia">
+
+        <nav class="navegacao-perfil">
+            <a  href="{{ url_for('dashboard') }}">
+                <img src="static/uploads/perfil-dashboard.png" alt="">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-rendimentos.png" alt="">
+                <span>Rendimentos</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-despesas.png" alt="">
+                <span>Despesas</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-dia-trabalhado.png" alt="">
+                <span>Dia Trabalhado</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-servico-extra.png" alt="">
+                <span>Serviço Extra</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-relatorios.png" alt="">
+                <span>Relatórios</span>
+            </a>
+
+            <a href="#">
+                <img src="static/uploads/perfil-historico.png" alt="">
+                <span>Histórico Semanal</span>
+            </a>
+        </nav>
+
+        <a class="sair-perfil"  href="{{ url_for('logout') }}">
+            <img src="static/uploads/perfil-sair.png" alt="">
+            <span>Sair</span>
+        </a>
+    </aside>
+    <div class="conteudo_dia_trab">
+        <header class="topo-celular">
+            <div class="logo_celular"></div>
+            <div></div>
+
+            <a href="{{ url_for('perfil') }}" class="usuario-logado">
+                {% if usuario[9] %}
+                    <img src="{{ url_for('static', filename='Uploads/' + usuario[9]) }}" alt="Foto do usuário">
+                {% else %}
+                    <img src="{{ url_for('static', filename='Uploads/perfil-usuario-topo.png') }}" alt="Foto padrão">
+                {% endif %}
+                <div>
+                    <strong>{{ usuario[0].split()[:2] | join(' ') }}</strong>
+                    <span>{{ usuario[1] }}</span>
+                </div>
+            </a>
+        </header>
+
+        <div class="linha"></div>
+        <div class="recepcao_usuario">
+            <p>Olá, {{ usuario[0].split()[:2] | join(' ') }}!</p>
+            <h2>Registrar Dia Trabalhado</h2>
+            <p>Informe a data e a quantidade de pacotes recebidos no dia.</p>
+        </div>
+        <main>
+            <div class="infromacao_tabela">
+                <img src="static/uploads/calendario_dia_trab.png" alt="">
+                <div class="texto_inform">
+                    <h2>Registrar Dia Trabalhado</h2>
+                    <p>Preencha as informações abaixo para registrar o dia trabalhado.</p>
+                </div>
+            </div>
+
+            {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% for categoria, mensagem in mensagens %}
+                <p class="mensagem {{ categoria }}">{{ mensagem }}</p>
+            {% endfor %}
+        {% endwith %}
+
+            <form action="{{ url_for('cadastrar_dia_trabalhado') }}" method="POST">
+
+                <div class="campo">
+                    <label>Data</label>
+                    <div class="campo_data">
+                        <input type="date" name="data" min="0.01" step="0.01" required>
+                    </div>
+                </div>
+
+                <div class="campo2">
+                    <label>Pacotes Coletados</label>
+                    <div class="campo_pacote">
+                        <input type="number" name="pacotes" min="0.01" step="0.01" placeholder="Digite a quantidade de pacotes" required>
+                        <img src="static/uploads/Icone de caixa.png" alt="">
+                    </div>
+                </div>
+                <div class="botao">
+                    <a href="{{ url_for('dashboard') }}" class="cancelar">Cancelar</a>
+                    <button type="submit" class="registrar-movimentacao">Registrar</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+body {
+    background-color: var(--branco-acinzentado);
+    display: flex;
+}
+
+.pagina-perfil {
+    min-height: 100vh;
+    display: flex;
+}
+
+.menu-lateral {
+    width: 250px;
+    min-height: 100vh;
+    padding: 25px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--branco);
+    border-right: 1px solid var(--cinza-claro);
+}
+
+.logo-perfil {
+    width: 180px;
+    margin: 0 auto 35px;
+}
+
+.navegacao-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.navegacao-perfil a,
+.sair-perfil {
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--azul-cinzento-escuro);
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.navegacao-perfil a img,
+.sair-perfil img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.sair-perfil {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--cinza-claro);
+}
+
+.perfil{
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+    justify-content: flex-end
+}
+.perfil .nome{
+    font-weight: bold;
+}
+.perfil .email{
+    color: var(--cinza);
+}
+.perfil img{
+    height: 40px;
+}
+.perfil .nome_email{
+    display: block;
+}
+.linha {
+    margin-left: 60px;
+    margin-right: auto;
+    width: 900px;
+    height: 1px;
+    background-color: var(--cinza-claro);
+}
+.titulo-perfil{
+    margin: 20px;
+}
+.meus-rendimentos{
+    margin-left: 20px;
+}
+.rendimentos-perfil {
+    box-sizing: border-box;
+    margin-left: -10px;
+    padding-left: 10px;
+    border-radius: 4px;
+}
+
+.btn-adicionar-rendimento {
+    width: 21%;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 11px;
+    border: none;
+    border-radius: 9px;
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.btn-adicionar-rendimento img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.cabecalho-rendimentos {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+
+.meus-rendimentos {
+    width: 100%;
+    padding: 14px 15px 16px;
+    box-sizing: border-box;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-radius: 8px;
+}
+
+.meus-rendimentos h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--azul-cinzento-escuro);
+}
+
+
+.campo-busca {
+    display: flex;
+    align-items: center;
+    width: 389px;
+    height: 30px;
+    padding: 0 9px;
+    box-sizing: border-box;
+    border: 1px solid var(--cinza-claro);
+    border-radius: 6px;
+    background-color: var(--branco);
+}
+
+.campo-busca input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 11px;
+}
+
+.campo-busca input::placeholder {
+    color: var(--cinza-claro);
+}
+
+
+.icone-filtro {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+}
+
+
+
+
+.tabela-rendimentos {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.tabela-rendimentos thead {
+    background-color: var(--cinza-claro);
+}
+
+.tabela-rendimentos th {
+    height: 29px;
+    padding: 0 15px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cinza-escuro);
+    padding-right: 100px;
+    ;
+}
